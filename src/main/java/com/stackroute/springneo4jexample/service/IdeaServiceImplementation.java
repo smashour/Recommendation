@@ -25,4 +25,20 @@ public class IdeaServiceImplementation implements IdeaService {
         savedIdea=ideaRepository.createNode(id,ideaName,role,subDomain);
         return savedIdea;
     }
+
+    @Override
+    public Idea getByName(String ideaName) {
+        return ideaRepository.getNode(ideaName);
+    }
+
+    @Override
+    public void deleteUser(String ideaName) {
+
+        ideaRepository.deleteNode(ideaName);
+    }
+
+    @Override
+    public Idea updateUser(Idea idea) {
+        return ideaRepository.save(idea);
+    }
 }

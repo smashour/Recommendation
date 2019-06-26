@@ -5,8 +5,8 @@ import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
-@RelationshipEntity("contains")
-public class Contains {
+@RelationshipEntity("worked")
+public class WorkedUpon {
     @GraphId
     private Long id;
 
@@ -14,6 +14,8 @@ public class Contains {
     private User user;
 
     @EndNode
-    private Role role;
+    private Idea idea;
+
+
 
 }

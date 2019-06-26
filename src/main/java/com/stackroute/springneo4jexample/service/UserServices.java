@@ -11,16 +11,21 @@ import java.util.Collection;
 public interface UserServices {
 
 
+    User createRelation(Long id, String subDomain);
 
-    public User saveUser(Long userId,String userName,String userDomain,String userSubDomain);
+    public User saveUser(Long userId, String userName, String userDomain, String userSubDomain);
 
     public Collection<User> getAll();
 
-//    public void deleteUser(Long id);
-//
-//    public User updateUser(User user);
-//
-//    public User getByName(String name);
+    User saveRelation(String subDomain);
+
+   public void deleteUser(String name);
+
+    public User updateUser(User user);
+
+   public User getByName(String name);
+
+    User createRelations(String subDomainName);
 //
 //
 //     public User saveRelation();

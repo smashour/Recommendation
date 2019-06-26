@@ -5,7 +5,6 @@ import com.stackroute.springneo4jexample.model.User;
 import com.stackroute.springneo4jexample.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 
 @Service
@@ -18,30 +17,23 @@ public class UserServiceImplementation implements UserServices {
     public UserServiceImplementation(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
+
     @Override
     public Collection<User> getAll() {
         return userRepository.getAllUsers();
     }
 
-//    @Override
-//    public void deleteUser(Long id) {
-//        userRepository.deleteNode(id);
-//    }
+    @Override
+    public User saveRelation(String subDomain) {
 
-//    @Override
-//    public User updateUser(User user) {
-//        return userRepository.save(user);
-//    }
-//
-//    @Override
-//    public User getByName(String name) {
-//        return userRepository.getNode(name);
-//    }
-//
-//    @Override
-//    public User saveRelation() {
-//        return userRepository.createRelation();
-//    }
+            return userRepository.createRelatonship(subDomain);
+        }
+
+    @Override
+    public User createRelation(Long id, String subDomain) {
+        return null;
+    }
 
     @Override
     public User saveUser(Long userId, String userName, String userDomain,String userSubDomain) {
@@ -49,7 +41,38 @@ public class UserServiceImplementation implements UserServices {
 
         savedUser=userRepository.createNode(userId,userName,userDomain,userSubDomain);
         return savedUser;
-        
+
     }
+
+    @Override
+    public User getByName(String name) {
+        return userRepository.getNode(name);
+    }
+
+    @Override
+    public User createRelations(String subDomainName) {
+        return userRepository.createRelations(subDomainName);
+    }
+
+
+    @Override
+    public void deleteUser(String name) {
+        userRepository.deleteNode(name);
+    }
+
+    @Override
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
+
+//    @Override
+//    public User saveRelation() {
+//        return userRepository.createRelation();
+//    }
+
+
+
+
 
 }
