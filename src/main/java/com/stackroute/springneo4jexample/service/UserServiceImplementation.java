@@ -6,6 +6,7 @@ import com.stackroute.springneo4jexample.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class UserServiceImplementation implements UserServices {
@@ -36,10 +37,10 @@ public class UserServiceImplementation implements UserServices {
     }
 
     @Override
-    public User saveUser(Long userId, String userName, String userDomain,String userSubDomain) {
+    public User saveUser(Long userId, String userName, String userIdea,String userSubDomain,String userRole) {
         User savedUser=null;
 
-        savedUser=userRepository.createNode(userId,userName,userDomain,userSubDomain);
+        savedUser=userRepository.createNode(userId,userName,userIdea,userSubDomain,userRole);
         return savedUser;
 
     }
@@ -50,9 +51,11 @@ public class UserServiceImplementation implements UserServices {
     }
 
     @Override
-    public User createRelations(String subDomainName) {
-        return userRepository.createRelations(subDomainName);
+    public User createRelations(String idea,String ideaName) {
+        return userRepository.createRelations(idea,ideaName);
     }
+
+
 
 
     @Override
@@ -63,6 +66,17 @@ public class UserServiceImplementation implements UserServices {
     @Override
     public User updateUser(User user) {
         return userRepository.save(user);
+    }
+
+
+    @Override
+    public Collection<User> getAllUsersBy(String subDomain) {
+        return userRepository.getAllUserDomain(subDomain);
+    }
+
+    @Override
+    public User createRoles(String role, String roleName) {
+        return userRepository.createRoles(role,roleName);
     }
 
 

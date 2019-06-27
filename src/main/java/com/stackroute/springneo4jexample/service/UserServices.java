@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public interface UserServices {
@@ -13,7 +14,7 @@ public interface UserServices {
 
     User createRelation(Long id, String subDomain);
 
-    public User saveUser(Long userId, String userName, String userDomain, String userSubDomain);
+    public User saveUser(Long userId, String userName, String userIdea, String userSubDomain,String userRole);
 
     public Collection<User> getAll();
 
@@ -25,7 +26,13 @@ public interface UserServices {
 
    public User getByName(String name);
 
-    User createRelations(String subDomainName);
+    User createRelations(String idea,String ideaName);
+
+   // public Collection<User> getAllUsers();
+
+    Collection<User> getAllUsersBy(String subDomainName);
+
+    User createRoles(String role, String roleName);
 //
 //
 //     public User saveRelation();

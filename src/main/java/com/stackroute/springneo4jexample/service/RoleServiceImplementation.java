@@ -6,6 +6,8 @@ import com.stackroute.springneo4jexample.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class RoleServiceImplementation implements RoleService {
 
@@ -25,5 +27,15 @@ public class RoleServiceImplementation implements RoleService {
     @Override
     public User createRelations() {
         return roleRepository.createRelations();
+    }
+
+    @Override
+    public Collection<Role> getAll() {
+        return roleRepository.getAll();
+    }
+
+    @Override
+    public void deleteRole(String roleName) {
+        roleRepository.delete(roleName);
     }
 }

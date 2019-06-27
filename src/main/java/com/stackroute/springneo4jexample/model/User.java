@@ -3,6 +3,7 @@ package com.stackroute.springneo4jexample.model;
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
+import org.springframework.data.neo4j.annotation.QueryResult;
 
 import java.util.List;
 
@@ -12,35 +13,28 @@ public class User {
     @GraphId
     private  Long id;
     private String name;
-    private String domain;
+    private String idea;
     private String subDomain;
-
-
-
-    public String getDomain() {
-        return domain;
-    }
-
-    public String getSubDomain() {
-        return subDomain;
-    }
-//    @Relationship(type= "LIKES")
-//    private List<Movie> movies;
-//
-//    public List<Movie> getMovies() {
-//        return movies;
-//    }
-
-    public User(Long id, String name,String domain, String subDomain) {
-        this.id = id;
-        this.name = name;
-        this.domain = domain;
-        this.subDomain = subDomain;
-
-
-    }
+    private String role;
 
     public User(){}
+
+
+
+
+    public User(Long id, String name, String idea, String subDomain, String role) {
+        this.id = id;
+        this.name = name;
+        this.idea = idea;
+        this.subDomain = subDomain;
+        this.role=role;
+
+    }
+
+
+    public String getRole() {
+        return role;
+    }
 
     public Long getId() {
         return id;
@@ -48,6 +42,14 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getIdea() {
+        return idea;
+    }
+
+    public String getSubDomain() {
+        return subDomain;
     }
 
 

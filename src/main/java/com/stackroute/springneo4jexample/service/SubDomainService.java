@@ -9,5 +9,15 @@ import java.util.Collection;
 public interface SubDomainService {
     Collection<SubDomain> getAll();
 
-    SubDomain saveSubDomain(Long id, String subDomainName);
+  
+
+    SubDomain createRelationship(String subDomain, String subDomainName);
+
+    SubDomain ideaRelationship(String subDomain, String subDomainName);
+
+    SubDomain updateUser(SubDomain subDomain);
+
+    SubDomain saveSubDomain(Long id, String subDomainName, String[] idea);
+
+    SubDomain ideaRecommend(String name);
 }

@@ -3,8 +3,13 @@ package com.stackroute.springneo4jexample.controller;
 import com.stackroute.springneo4jexample.model.User;
 import com.stackroute.springneo4jexample.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/rest/neo4j/user/")
@@ -22,7 +27,7 @@ public class UserController {
     @PostMapping("save")
     public User saveUser(@RequestBody User user) {
 
-        return userServices.saveUser(user.getId(), user.getName(), user.getDomain(),user.getSubDomain());
+        return userServices.saveUser(user.getId(), user.getName(), user.getIdea(),user.getSubDomain(),user.getRole());
     }
 
     @PostMapping("graph/{subDomain}")
@@ -47,11 +52,25 @@ public class UserController {
         return "Deleted User";
     }
 
-    @PostMapping("map/{subDomainName}")
-    public User createRelation(@PathVariable String subDomainName){
-        User idea1=userServices.createRelations(subDomainName);
-        return idea1;
+    @PostMapping("map/{idea}/{ideaName}")
+    public User createRelation(@PathVariable String idea, @PathVariable String ideaName){
+        User user1=userServices.createRelations(idea,ideaName);
+        return user1;
     }
+
+    @PostMapping("graph/{role}/{roleName}")
+    public User createRoles(@PathVariable String role, @PathVariable String roleName){
+        User user2=userServices.createRoles(role,roleName);
+        return user2;
+    }
+
+
+    @GetMapping("recommendations/{subDomain}")
+    public Collection<User> getAllUsers(@PathVariable String subDomain) {
+
+        return userServices.getAllUsersBy(subDomain);
+    }
+
 
 //    @PostMapping("graph/user/{userSubDomain}/idea/{ideaRole}")
 //    public ResponseEntity hasRole(@PathVariable("userSubDomain") String userSubDomain, @PathVariable("ideaRole") String ideaRole)
