@@ -79,6 +79,11 @@ public class UserServiceImplementation implements UserServices {
         return userRepository.createRoles(role,roleName);
     }
 
+    @Override
+    public List<User> getAllUsers(String ideaName) {
+        return userRepository.findByIdea(ideaName);
+    }
+
 
 //    @Override
 //    public User saveRelation() {

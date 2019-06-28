@@ -72,14 +72,17 @@ public class UserController {
     }
 
 
-//    @PostMapping("graph/user/{userSubDomain}/idea/{ideaRole}")
-//    public ResponseEntity hasRole(@PathVariable("userSubDomain") String userSubDomain, @PathVariable("ideaRole") String ideaRole)
-//    {
-//        ResponseEntity responseEntity;
-//        userServices.createRelation(user.getSubDomain(),subDomain);
-//        responseEntity=new ResponseEntity("Create", HttpStatus.OK);
-//        return responseEntity;
-//    }
+    @GetMapping("/recommendations/all/{ideaName}")
+    public ResponseEntity<Iterable<User>> getAllUsers(@PathVariable List<String> ideaName) {
+        List<User> users=new ArrayList<>();
+        for (String param:ideaName) {
+            users.addAll(userServices.getAllUsers(param));
+        }
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+
+
 
 
 

@@ -36,7 +36,7 @@ public class SubDomainController {
         SubDomain subDomain2= subDomainService.ideaRelationship(subDomain, subDomainName);
         return subDomain2;
     }
-    @PutMapping("{subDomainName}")
+    @PutMapping("/{subDomainName}")
     public SubDomain updateSubDomain(@RequestBody SubDomain subDomain){
         return subDomainService.updateUser(subDomain);
     }

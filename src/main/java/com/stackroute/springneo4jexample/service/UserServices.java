@@ -33,6 +33,8 @@ public interface UserServices {
     Collection<User> getAllUsersBy(String subDomainName);
 
     User createRoles(String role, String roleName);
+
+    public List<User> getAllUsers(String ideaName);
 //
 //
 //     public User saveRelation();

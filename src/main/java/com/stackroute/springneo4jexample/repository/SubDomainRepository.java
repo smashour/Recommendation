@@ -23,7 +23,7 @@ public interface SubDomainRepository extends Neo4jRepository<SubDomain,Long> {
     SubDomain ideaRelationship(String subDomain, String subDomainName);
 
 
-    @Query("MATCH (u:User{name:u.name={userName}})-[r:WORKED_UPON]->(i:Idea)-[:is_of]->(:SubDomain)<-[:is_of]-(m:Idea) CREATE (m)-[c:recommend]->(u) RETURN c")
+    @Query("MATCH  (u:User)-[r:WORKED_UPON]->(i:Idea)-[:is_of]->(:SubDomain)<-[:is_of]-(m:Idea) CREATE (m)-[c:recommend]->(u) RETURN c")
     SubDomain ideaRecommend(String userName);
 //
 //    @Query("MATCH (u:User),(b:SubDomain),(i:Idea) WHERE (u.name={userName}) AND (u:User)-[:WORKED_UPON]->(i:Idea)-[:is_of]->(:SubDomain)<-[:is_of]-(m:Idea) CREATE (m)-[c:recommend]->(u) RETURN c")

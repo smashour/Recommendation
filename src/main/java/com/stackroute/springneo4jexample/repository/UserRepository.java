@@ -38,6 +38,10 @@ public interface UserRepository extends Neo4jRepository<User,Long> {
 
     @Query("MATCH (u:User),(i:Role)  WHERE u.role=({userRole}) AND i.roleName={roleName} CREATE(u)-[:is_a]->(i);")
     User createRoles( String userRole, String roleName);
+
+    @Query("MATCH (u:User),(i:Idea) where i.ideaName=({ideaName}) match(u)<-[:hasIdea]-(i) RETURN u LIMIT 1000")
+
+    List<User> findByIdea(String ideaName);
 //
 //    @Query("MATCH(u:User)-[r:LIKES]->(s:SubDomain) RETURN r")
 //    public User createRelations(@Param("subDomainName") String subDomainName);

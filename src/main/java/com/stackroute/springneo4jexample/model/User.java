@@ -5,6 +5,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 import org.springframework.data.neo4j.annotation.QueryResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @NodeEntity
@@ -16,6 +17,8 @@ public class User {
     private String idea;
     private String subDomain;
     private String role;
+    @Relationship(type = "hasIdea",direction = Relationship.OUTGOING)
+    private ArrayList<String> ideaName;
 
     public User(){}
 
