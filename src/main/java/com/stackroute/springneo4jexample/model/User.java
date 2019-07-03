@@ -2,10 +2,6 @@ package com.stackroute.springneo4jexample.model;
 
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
-import org.springframework.data.neo4j.annotation.QueryResult;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @NodeEntity
@@ -15,25 +11,29 @@ public class User {
     private  Long id;
     private String name;
     private String idea;
-    private String subDomain;
+    private List<String> subDomain;
     private String role;
-    @Relationship(type = "hasIdea",direction = Relationship.OUTGOING)
-    private ArrayList<String> ideaName;
+    private  List<String> skills;
+
 
     public User(){}
 
 
 
 
-    public User(Long id, String name, String idea, String subDomain, String role) {
+    public User(Long id, String name, String idea, List<String> subDomain, String role, List<String> skills) {
         this.id = id;
         this.name = name;
         this.idea = idea;
         this.subDomain = subDomain;
         this.role=role;
+        this.skills=skills;
 
     }
 
+    public List<String> getSkills() {
+        return skills;
+    }
 
     public String getRole() {
         return role;
@@ -51,13 +51,9 @@ public class User {
         return idea;
     }
 
-    public String getSubDomain() {
+    public List<String> getSubDomain() {
         return subDomain;
     }
-
-
-
-
 //    @Override
 //    public String toString() {
 //        return "User{" +

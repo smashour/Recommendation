@@ -27,11 +27,11 @@ public class UserController {
     @PostMapping("save")
     public User saveUser(@RequestBody User user) {
 
-        return userServices.saveUser(user.getId(), user.getName(), user.getIdea(),user.getSubDomain(),user.getRole());
+        return userServices.saveUser(user.getId(), user.getName(), user.getIdea(),user.getSubDomain(),user.getRole(),user.getSkills());
     }
 
     @PostMapping("graph/{subDomain}")
-    public User saveRelation(@RequestBody User user,@PathVariable("subDomain") String subDomain){
+    public User saveRelation(@RequestBody User user,@PathVariable("subDomain") List<String> subDomain){
         return userServices.saveRelation(user.getSubDomain());
     }
 

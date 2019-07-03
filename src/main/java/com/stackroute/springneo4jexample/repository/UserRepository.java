@@ -14,11 +14,11 @@ public interface UserRepository extends Neo4jRepository<User,Long> {
     @Query("MATCH (u:User) RETURN u")
     Collection<User> getAllUsers();
 
-    @Query("CREATE (u:User) SET u.id={userId},u.name={userName},u.idea={userIdea},u.subDomain={userSubDomain},u.role={userRole} RETURN u")
-     public User createNode(Long userId, String userName, String userIdea, String userSubDomain,String userRole);
+    @Query("CREATE (u:User) SET u.id={id},u.name={name},u.idea={idea},u.subDomain={subDomain},u.role={role},u.skills={skills} RETURN u")
+     public User createNode(Long id, String name, String idea,List<String> subDomain,String role, List<String> skills);
 
-    @Query("MATCH (u:User),(i:Idea) WHERE {u.subDomain={userSubDomain}} CREATE (u)[r:WORKOn]->(i) RETURN r")
-    public User createRelatonship(String userSubDomain);
+    @Query("MATCH (u:User),(i:Idea) WHERE {u.subDomain={subDomain}} CREATE (u)[r:WORKOn]->(i) RETURN r")
+    public User createRelatonship(List<String> subDomain);
 
 
     @Query("MATCH (n:User) WHERE n.name={userName} DETACH DELETE n RETURN 'node deleted' ")

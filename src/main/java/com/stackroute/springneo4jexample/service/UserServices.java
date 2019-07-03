@@ -12,13 +12,13 @@ import java.util.List;
 public interface UserServices {
 
 
-    User createRelation(Long id, String subDomain);
+   // User createRelation(Long id, String subDomain);
 
-    public User saveUser(Long userId, String userName, String userIdea, String userSubDomain,String userRole);
+    public User saveUser(Long userId, String userName, String userIdea, List<String> subDomain,String userRole, List<String> skills  );
 
     public Collection<User> getAll();
 
-    User saveRelation(String subDomain);
+    User saveRelation(List<String> subDomain);
 
    public void deleteUser(String name);
 
